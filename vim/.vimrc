@@ -169,6 +169,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <C-w>o <C-w>s " Map Ctr+W+o to Ctr+W+s (pane splitting horizontally)
 " keybindings for vdebug
 " let g:vdebug_keymap = {
 " \    "run" : "<Leader>/",
