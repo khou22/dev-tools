@@ -220,6 +220,7 @@ set updatetime=250
 
 " NERDTree folder tree
 autocmd vimenter * NERDTree " Automatically open when VIM opens
+let NERDTreeShowHidden=1 " Show hidden files (files that being with '.')
 
 " Sublime-like multiple cursor highlighting and editing
 let g:multi_cursor_next_key='<C-d>' " Default: <C-n>
