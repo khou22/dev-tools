@@ -27,7 +27,6 @@ set number                                   " add line numbers
 call plug#begin("~/.vim/plugged")
 Plug 'tomtom/tcomment_vim'
 Plug 'leafgarland/typescript-vim'
-" Plug 'joonty/vdebug' “ Was useful for debugging Cake PHP but not using anymore
 Plug 'tpope/vim-fugitive'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
@@ -48,11 +47,6 @@ Plug 'easymotion/vim-easymotion' " Fast, lucid in-file navigation
 Plug 'pangloss/vim-javascript' " Javascript highlighting
 Plug 'mxw/vim-jsx' " JSX highlighting
 
-" Languages
-Plug 'kchmck/vim-coffee-script'
-Plug 'elixir-lang/vim-elixir'
-Plug 'junegunn/vim-emoji'
-Plug 'tpope/vim-rails'
 call plug#end()
 " ------------------------------------------------------------------------------
 " Binds
@@ -152,19 +146,6 @@ au FileType html,haml,scss setlocal tabstop=4 softtabstop=4 shiftwidth=4
 au FileType go setlocal tabstop=4 shiftwidth=4 noexpandtab nolist
 au FileType javascript,js setlocal tabstop=4 shiftwidth=4 softtabstop=4
 au FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4
-au BufNewFile,BufRead Vagrantfile,Berksfile set filetype=ruby
-" When not in a Rails project, vim-rails doesn"t highlight
-" RSpec files. Do it manually.
-if !exists(":Rails!")
-  function! SyntaxForRspec()
-    syn keyword rubyRspec describe context it its specify shared_context shared_examples_for it_should_behave_like it_behaves_like before after around subject fixtures controller_name helper_name scenario feature background
-    syn match rubyRspec "\<let\>!\="
-    syn keyword rubyRspec violated pending expect double mock mock_model stub_model
-    syn match rubyRspec "\.\@<!\<stub\>!\@!"
-    highlight def link rubyRspec Function
-  endfunction
-  au BufNewFile,BufRead *_spec.rb call SyntaxForRspec()
-endif
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -219,6 +200,7 @@ set updatetime=250
 
 " NERDTree folder tree
 autocmd vimenter * NERDTree " Automatically open when VIM opens
+let NERDTreeShowHidden = 1 " Show hidden files by default
 
 " Sublime-like multiple cursor highlighting and editing
 let g:multi_cursor_next_key='<C-d>' " Default: <C-n>
