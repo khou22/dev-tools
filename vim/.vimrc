@@ -27,7 +27,7 @@ set number                                   " add line numbers
 call plug#begin("~/.vim/plugged")
 Plug 'tomtom/tcomment_vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive' " GIT integration by typing :Gstatus, etc.
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'henrik/rename.vim'
@@ -117,7 +117,7 @@ if has("gui_running")
     set guioptions-=T             " Disable the tool bar bar.
     set guioptions-=l             " Disable left scrollbar.
     set guioptions-=L             " Disable left scrollbar when split.
-    set guioptions-=r             " Diable right scrollbar.
+    set guioptions-=r             " Disable right scrollbar.
     set guioptions-=a             " Do not auto copy selection to clipboard.
     " If MacVim do some specific things.
     set guifont=Monaco:h16
@@ -150,7 +150,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <C-w>o <C-w>s " Map Ctr+W+o to Ctr+W+s (pane splitting horizontally)
 " keybindings for vdebug
 " let g:vdebug_keymap = {
 " \    "run" : "<Leader>/",
@@ -193,6 +192,10 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+" Set cursor line color
+set cursorline
+hi CursorLine ctermbg=238 " Works for both dark and light backgrounds
+
 " Git Gutter (Git Diff in Sidebar)
 set updatetime=250
 
@@ -201,8 +204,7 @@ set updatetime=250
 
 " NERDTree folder tree
 autocmd vimenter * NERDTree " Automatically open when VIM opens
-
-let NERDTreeShowHidden=1 " Show hidden files (files that being with '.')
+let NERDTreeShowHidden = 1 " Show hidden files by default
 
 " Sublime-like multiple cursor highlighting and editing
 let g:multi_cursor_next_key='<C-d>' " Default: <C-n>
@@ -231,3 +233,4 @@ let g:jsx_ext_required = 0 " Allows JSX highlighting in .js files
 
 " Line wrap when moving left and right with cursor
 set whichwrap+=<,>,h,l,[,]
+
