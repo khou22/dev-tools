@@ -47,6 +47,11 @@ Plug 'easymotion/vim-easymotion' " Fast, lucid in-file navigation
 Plug 'pangloss/vim-javascript' " Javascript highlighting
 Plug 'mxw/vim-jsx' " JSX highlighting
 
+" Themes
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'nightsense/office' " Light theme
+Plug 'nightsense/carbonized' " Light theme
+
 call plug#end()
 " ------------------------------------------------------------------------------
 " Binds
@@ -187,14 +192,9 @@ syntax on
 
 " Addiontal Customization
 
-" Solarized color scheme
-syntax enable
-set background=dark
-colorscheme solarized
-
 " Set cursor line color
 set cursorline
-hi CursorLine ctermbg=238 " Works for both dark and light backgrounds
+" hi CursorLine ctermbg=238 " Works for both dark and light backgrounds
 
 " Git Gutter (Git Diff in Sidebar)
 set updatetime=250
@@ -234,3 +234,22 @@ let g:jsx_ext_required = 0 " Allows JSX highlighting in .js files
 " Line wrap when moving left and right with cursor
 set whichwrap+=<,>,h,l,[,]
 
+" Syntax highlighting
+syntax enable
+
+
+" COLOR SCHEME
+
+" Default color scheme:
+set background=dark
+colorscheme solarized " Solarized color scheme
+" echom $ITERM_PROFILE " Debugging
+
+" If contains 'light' in iTerm profile
+set ignorecase
+if $ITERM_PROFILE =~ "light"
+    " echom "Light color scheme"
+    set background=light
+    colorscheme PaperColor
+endif
+set noignorecase
