@@ -252,4 +252,6 @@ if $ITERM_PROFILE =~ "light"
     set background=light
     colorscheme PaperColor
 endif
-set noignorecase
+
+" Ignore case when doing VIM commands
+set ignorecase
